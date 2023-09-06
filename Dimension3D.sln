@@ -5,7 +5,7 @@ VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{2CB050C2-A544-453F-B014-2910DA46A9B3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DimensionsD.Samples", "Samples\DimensionsD.Samples.csproj", "{FB17A4BE-BFF7-4FA1-AC51-1D9A4A4360AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dimension3D.Samples", "Samples\Dimension3D.Samples.csproj", "{FB17A4BE-BFF7-4FA1-AC51-1D9A4A4360AE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dimension3D.Core", "Src\Dimension3D.Core\Dimension3D.Core.csproj", "{C411B824-62F7-4500-9C74-F5CC66F3FB71}"
 EndProject

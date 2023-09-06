@@ -7,4 +7,8 @@
     <RootNamespace>$(MSBuildProjectName)</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="ModelVisual3D\UiElement\ButtonBase\ToggleButton\RadioButton\" />
+  </ItemGroup>
+
 </Project>

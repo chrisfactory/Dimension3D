@@ -5,8 +5,105 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Dimension3D.Samples" 
         mc:Ignorable="d"   WindowStartupLocation="CenterScreen" WindowState="Maximized"
-        Title="Dimension3D Demo" Height="600" Width="600"  >
+        Title="Dimension3D Demo" Height="600" Width="600"   Background="#FF606060">
     <Window.DataContext>
         <local:GlobalViewModel/>
     </Window.DataContext>
+
+    <Grid>
+        <Grid.Resources>
+            <Storyboard x:Key="Storyboard" BeginTime="00:00:00.000" Duration="00:00:10.000">
+                <DoubleAnimation 
+                    Storyboard.TargetName="Viewport" 
+                    Storyboard.TargetProperty="(Viewport3D.Camera).(PerspectiveCamera.Transform).(RotateTransform3D.Rotation).(AxisAngleRotation3D.Angle)" 
+                    From="0" To="360" Duration="00:30:00.000" AutoReverse="False" RepeatBehavior="Forever"  />
+            </Storyboard>
+        </Grid.Resources>
+        <Grid.Triggers>
+            <EventTrigger RoutedEvent="Loaded">
+                <BeginStoryboard Storyboard="{StaticResource Storyboard}" />
+            </EventTrigger>
+        </Grid.Triggers>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+
+
+        <Label Content="{Binding CurrentSample.Title}" Grid.Column="1" HorizontalAlignment="Center" FontSize="33" FontWeight="DemiBold" Foreground="Orange" Margin="30"/>
+
+        <ListBox 
+                            ItemsSource="{Binding Samples,Mode=OneWay}" 
+                            SelectedValue="{Binding CurrentSample}"
+                            Grid.Row="0" 
+                            Grid.RowSpan="2"
+                            Width="200"
+                            Background="#FF303030"
+                            HorizontalContentAlignment="Stretch">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Label Content="{Binding Title}" HorizontalAlignment="Center" Foreground="LightBlue" FontWeight="DemiBold" />
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+
+
+        <Grid Background="#FF303030" Grid.Column="1" Grid.Row="1" >
+
+            <Grid DockPanel.Dock="Bottom"  Background="Transparent">
+                <Viewport3D ClipToBounds="True" x:Name="Viewport">
+                    <Viewport3D.Camera>
+                        <PerspectiveCamera 
+                                            x:Name="mCamera" 
+                                            Position="{Binding CurrentSample.CameraPosition}"
+                                            LookDirection="0,0,-1"
+                                            FieldOfView="45"  
+                                            FarPlaneDistance="100000" 
+                                            UpDirection="0,1,0" 
+                                            NearPlaneDistance="0">
+                            <PerspectiveCamera.Transform>
+                                <RotateTransform3D CenterX="0" CenterY="0" CenterZ="0" >
+                                    <RotateTransform3D.Rotation>
+                                        <AxisAngleRotation3D x:Name="RotCamera" Axis="0,1,0" Angle="0"/>
+                                    </RotateTransform3D.Rotation>
+                                </RotateTransform3D>
+                            </PerspectiveCamera.Transform>
+                        </PerspectiveCamera>
+                    </Viewport3D.Camera>
+                    <ModelVisual3D>
+                        <ModelVisual3D.Content>
+                            <AmbientLight x:Name="Ambient" Color="#808080"/>
+                        </ModelVisual3D.Content>
+                    </ModelVisual3D>
+                    <ModelVisual3D>
+                        <ModelVisual3D.Content>
+                            <DirectionalLight x:Name="Directional" Color="#FFFFFFFF" Direction="0,-1,-1"/>
+                        </ModelVisual3D.Content>
+                    </ModelVisual3D>
+
+                    <ModelVisual3D  Dimension3D.DataContext="{Binding CurrentSample}" >
+                        <Dimension3D.DimensionModelVisual>
+                            <DimensionModelVisual3D  ItemsSource="{Binding Items}" SatelliteItemsSource="{Binding SatelliteItems}" />
+                        </Dimension3D.DimensionModelVisual>
+                    </ModelVisual3D>
+                    
+                    
+                </Viewport3D>
+                <Button x:Name="but" Content="Reset Demo" Command="{Binding CurrentSample.ResetDemo}" 
+                    HorizontalAlignment="Right" VerticalAlignment="Top" Margin="20" Padding="5" 
+                    Background="#FF404040"
+                    Foreground="Violet">
+
+                </Button>
+            </Grid>
+        </Grid>
+
+    </Grid>
 </Window>
