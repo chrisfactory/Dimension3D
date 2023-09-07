@@ -11,9 +11,16 @@ namespace Dimension3D.Core
         static DimensionElement3D()
         {
             DefaultStyleKeyProperty.OverrideMetadata(_typeofThis, new FrameworkPropertyMetadata(_typeofThis));
-            TransformProperty = DependencyProperty.Register(nameof(Transform), typeof(int), _typeofThis, new PropertyMetadata(null));
-
+            TransformProperty = DependencyProperty.Register(nameof(Transform), typeof(Transform3D), _typeofThis, new FrameworkPropertyMetadata<DimensionElement3D>(TransformPropertyChangedCallback));
         }
+
         public Transform3D Transform { get => (Transform3D)GetValue(TransformProperty); set => SetValue(TransformProperty, value); }
+
+
+        private static void TransformPropertyChangedCallback(DimensionElement3D d, DependencyPropertyChangedEventArgs e)
+        {
+            d.OnApplyTransform();
+        }
+        protected virtual void OnApplyTransform() { }
     }
 }

@@ -89,9 +89,13 @@
                     </ModelVisual3D>
 
                     <ModelVisual3D  Dimension3D.DataContext="{Binding CurrentSample}" >
-                        <Dimension3D.DimensionModelVisual>
-                            <DimensionModelVisual3D  ItemsSource="{Binding Items}" SatelliteItemsSource="{Binding SatelliteItems}" />
-                        </Dimension3D.DimensionModelVisual>
+                        <Dimension3D.Visual3D>
+                            <DimensionModelVisual3D  ItemsSource="{Binding Items}" SatelliteItemsSource="{Binding SatelliteItems}" >
+                                <DimensionModelVisual3D.InputElement>
+                                    <DimensionButton3D Command="{Binding CommandClick}" />
+                                </DimensionModelVisual3D.InputElement>
+                            </DimensionModelVisual3D>
+                        </Dimension3D.Visual3D>
                     </ModelVisual3D>
                     
                     

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Media.Media3D;
 
 namespace Dimension3D.Core
 {
@@ -10,5 +11,7 @@ namespace Dimension3D.Core
         {
             DefaultStyleKeyProperty.OverrideMetadata(_typeofThis, new FrameworkPropertyMetadata(_typeofThis));
         }
+
+ 
     }
 }

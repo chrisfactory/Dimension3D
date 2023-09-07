@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace Dimension3D.Core
 {
-    //public class DimensionCheckBox3D : DimensionToggleButton3D
-    //{
-    //}
+    internal class VisualItems : ItemsControl
+    {
+    }
 }

@@ -3,7 +3,7 @@
   <Class Name="Dimension3D.Core.DimensionElement3D">
     <Position X="12.25" Y="3.25" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>AAAAABAAABAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAABAAABAAAAAAAAAAAASAAAAAACAAAAAAAAAAAAA=</HashCode>
       <FileName>ModelVisual3D\DimensionElement3D.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -14,17 +14,10 @@
       <FileName>ModelVisual3D\Visual\DimensionModelVisual3D.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Dimension3D.Core.DimensionVisual3D">
-    <Position X="9.25" Y="8.5" Width="2.75" />
-    <TypeIdentifier>
-      <HashCode>CAAABBASAAAQAEAAAAAAAAAEBAAEAADAAFhAAIAAAFA=</HashCode>
-      <FileName>ModelVisual3D\Visual\DimensionVisual3D.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="Dimension3D.Core.DimensionGeometryModel3D" Collapsed="true">
     <Position X="20.75" Y="16.25" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>AAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAgAA=</HashCode>
       <FileName>ModelVisual3D\Model\DimensionGeometryModel3D.cs</FileName>
       <NewMemberFileName>ModelVisual3D\Model\DimensionModel3D.cs</NewMemberFileName>
     </TypeIdentifier>
@@ -45,35 +38,37 @@
     <Position X="12" Y="16.25" Width="2.25" />
     <AssociationLine Name="Visual" Type="System.Windows.Media.Visual">
       <MemberNameLabel ManuallyPlaced="true">
-        <Position X="0.511" Y="0.06" />
+        <Position X="0.812" Y="0.053" />
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAABIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAA=</HashCode>
+      <HashCode>AAAAABIAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAIAAQAA=</HashCode>
       <FileName>ModelVisual3D\Visual\DimensionContentVisual.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Visual" />
+      <Property Name="GeometryModel" />
     </ShowAsAssociation>
   </Class>
   <Class Name="Dimension3D.Core.DimensionInputElement3D">
-    <Position X="1.75" Y="16.25" Width="2.25" />
+    <Position X="1.75" Y="12.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ModelVisual3D\UiElement\DimensionInputElement3D.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Dimension3D.Core.DimensionButtonBase3D" Collapsed="true">
-    <Position X="1.5" Y="20.25" Width="2.75" />
+    <Position X="1.5" Y="20" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>CKhJAlQIAAAAAAEIgERABaAHAxECAACABEAAAAAAAog=</HashCode>
       <FileName>ModelVisual3D\UiElement\ButtonBase\DimensionButtonBase3D.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="Dimension3D.Core.DimensionRepeatButton3D" Collapsed="true">
     <Position X="1.5" Y="22.75" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>BCAAAJAIAACgAAIAAIBEAAAOAAMYACAAAAAAAgIAAAA=</HashCode>
       <FileName>ModelVisual3D\UiElement\ButtonBase\RepeatButton\DimensionRepeatButton3D.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -85,21 +80,59 @@
     </TypeIdentifier>
   </Class>
   <Class Name="System.Windows.Media.Visual" Collapsed="true">
-    <Position X="15.75" Y="16.25" Width="2.25" />
+    <Position X="15.75" Y="17" Width="2.25" />
     <TypeIdentifier />
   </Class>
   <Class Name="Dimension3D.Core.DimensionToggleButton3D" Collapsed="true">
     <Position X="8.5" Y="22.75" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAKCBAAAiAAAACACIgAAAAiAAAAAAAAAARAACEACAA=</HashCode>
       <FileName>ModelVisual3D\UiElement\ButtonBase\ToggleButton\DimensionToggleButton3D.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Dimension3D.Core.DimensionCheckBox3D" Collapsed="true">
-    <Position X="8.5" Y="24.5" Width="2.75" />
+  <Class Name="Dimension3D.Core.DimensionVisual3D">
+    <Position X="9.5" Y="8.5" Width="2.75" />
+    <NestedTypes>
+      <Class Name="Dimension3D.Core.DimensionVisual3D.OwnerContext" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ModelVisual3D\Visual\DimensionVisual3D.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <AssociationLine Name="SatelliteChildren" Type="Dimension3D.Core.VisualItems" FixedToPoint="true">
+      <Path>
+        <Point X="12.25" Y="11.688" />
+        <Point X="14.5" Y="11.688" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="1.089" Y="0.012" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="Children" Type="Dimension3D.Core.VisualItems">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="1.506" Y="-0.015" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="InputElement" Type="Dimension3D.Core.DimensionInputElement3D">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="4.423" Y="0.101" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>CABARBDSAAAQAEAgAAAMAACABAAEAADAQFAAAIAAAAA=</HashCode>
+      <FileName>ModelVisual3D\Visual\DimensionVisual3D.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="SatelliteChildren" />
+      <Property Name="Children" />
+      <Property Name="InputElement" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Dimension3D.Core.VisualItems">
+    <Position X="14.5" Y="11" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>ModelVisual3D\UiElement\ButtonBase\ToggleButton\CheckBox\DimensionCheckBox3D.cs</FileName>
+      <FileName>ModelVisual3D\Visual\VisualItems.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
