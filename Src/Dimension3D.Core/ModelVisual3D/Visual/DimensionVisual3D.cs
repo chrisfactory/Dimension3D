@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media.Media3D;
 
 namespace Dimension3D.Core
@@ -19,6 +20,9 @@ namespace Dimension3D.Core
         public static readonly DependencyProperty ItemsSourceProperty;
         public static readonly DependencyProperty ItemTemplateSelectorProperty;
         public static readonly DependencyProperty ItemTemplateProperty;
+
+        internal static readonly DependencyPropertyKey IsMouseOverPropertyKey;
+        new public static readonly DependencyProperty IsMouseOverProperty;
         static DimensionVisual3D()
         {
             DefaultStyleKeyProperty.OverrideMetadata(_typeofThis, new FrameworkPropertyMetadata(_typeofThis));
@@ -31,6 +35,9 @@ namespace Dimension3D.Core
             ItemsSourceProperty = DependencyProperty.Register(nameof(ItemsSource), typeof(IEnumerable), _typeofThis, new FrameworkPropertyMetadata<DimensionVisual3D>(ItemsPropertyChangedCallback));
             ItemTemplateSelectorProperty = DependencyProperty.Register(nameof(ItemTemplateSelector), typeof(DataTemplateSelector), _typeofThis, new FrameworkPropertyMetadata());
             ItemTemplateProperty = DependencyProperty.Register(nameof(ItemTemplate), typeof(DataTemplate), _typeofThis, new FrameworkPropertyMetadata());
+
+            IsMouseOverPropertyKey = DependencyProperty.RegisterReadOnly(nameof(IsMouseOver), typeof(bool), _typeofThis, new FrameworkPropertyMetadata(false));
+            IsMouseOverProperty = IsMouseOverPropertyKey.DependencyProperty;
         }
 
 
@@ -56,7 +63,7 @@ namespace Dimension3D.Core
         public IEnumerable ItemsSource { get => (IEnumerable)GetValue(ItemsSourceProperty); set => SetValue(ItemsSourceProperty, value); }
         public DataTemplateSelector ItemTemplateSelector { get => (DataTemplateSelector)GetValue(ItemTemplateSelectorProperty); set => SetValue(ItemTemplateSelectorProperty, value); }
         public DataTemplate ItemTemplate { get => (DataTemplate)GetValue(ItemTemplateProperty); set => SetValue(ItemTemplateProperty, value); }
-
+        new public bool IsMouseOver { get => (bool)GetValue(IsMouseOverProperty); private set => SetValue(IsMouseOverPropertyKey, value); }
 
         internal void AttachRoot(Viewport3D viewport)
         {
@@ -78,6 +85,20 @@ namespace Dimension3D.Core
                 owner.Detach();
             Owner = null;
         }
+
+
+
+        protected override void OnMouseEnter(MouseEventArgs e)
+        {
+            IsMouseOver = true;
+            base.OnMouseEnter(e);
+        }
+        protected override void OnMouseLeave(MouseEventArgs e)
+        {
+            IsMouseOver = false;
+            base.OnMouseLeave(e);
+        }
+
         #region Items
         private static void ItemsPropertyChangedCallback(DimensionVisual3D d, DependencyPropertyChangedEventArgs e)
         {

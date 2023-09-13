@@ -1,9 +1,13 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows;
+using System.Windows.Markup;
 using System.Windows.Media.Media3D;
 
 namespace Dimension3D.Core
 {
+    [ContentProperty(nameof(Model))]
+    [DefaultProperty(nameof(Model))]
     public class DimensionModelVisual3D : DimensionVisual3D
     {
         private static Type _typeofThis = typeof(DimensionModelVisual3D);
@@ -15,10 +19,7 @@ namespace Dimension3D.Core
         }
 
 
-
-
         public DimensionModel3D Model { get => (DimensionModel3D)GetValue(ModelProperty); set => SetValue(ModelProperty, value); }
-
 
 
         private static void ModelPropertyChangedCallback(DimensionModelVisual3D d, DependencyPropertyChangedEventArgs e)
@@ -27,6 +28,16 @@ namespace Dimension3D.Core
             if (e.NewValue is DimensionModel3D dimensionModel3D)
                 newModel = dimensionModel3D.GetModel();
             d.SetModel(newModel);
+        }
+
+        public override void OnApplyTemplate()
+        {
+            base.OnApplyTemplate();
+            var dimensionModel3D = this.Template.FindName("box", this) as DimensionModel3D;
+            Model3D? newModel = null;
+            if (dimensionModel3D != null)
+                newModel = dimensionModel3D.GetModel();
+            SetModel(newModel);
         }
     }
 }

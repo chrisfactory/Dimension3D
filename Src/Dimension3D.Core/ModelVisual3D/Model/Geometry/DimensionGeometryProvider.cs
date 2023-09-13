@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dimension3D.Core.Tools;
+using System;
 using System.Windows;
 using System.Windows.Media.Media3D;
 
@@ -12,8 +13,8 @@ namespace Dimension3D.Core
 
         static DimensionGeometryProvider()
         {
-            BackMaterialProperty = DependencyProperty.Register(nameof(BackMaterial), typeof(Material), _typeofThis, new FrameworkPropertyMetadata<DimensionGeometryProvider>(OnMaterialsPropertyChangedCallback));
-            MaterialProperty = DependencyProperty.Register(nameof(Material), typeof(Material), _typeofThis, new FrameworkPropertyMetadata<DimensionGeometryProvider>(OnMaterialsPropertyChangedCallback));
+            BackMaterialProperty = DependencyProperty.Register(nameof(BackMaterial), typeof(Material), _typeofThis, new FrameworkPropertyMetadata());
+            MaterialProperty = DependencyProperty.Register(nameof(Material), typeof(Material), _typeofThis, new FrameworkPropertyMetadata());
 
         }
 
@@ -22,6 +23,8 @@ namespace Dimension3D.Core
         protected DimensionGeometryProvider()
         {
             InvalidateGeometry();
+            Model.SetBindingTo(GeometryModel3D.MaterialProperty, DimensionGeometryProvider.MaterialProperty, this);
+            Model.SetBindingTo(GeometryModel3D.BackMaterialProperty, DimensionGeometryProvider.BackMaterialProperty, this);
         }
 
         public Material Material { get => (Material)GetValue(MaterialProperty); set => SetValue(MaterialProperty, value); }
@@ -33,13 +36,7 @@ namespace Dimension3D.Core
         }
 
         protected abstract MeshGeometry3D ProvideMesh();
+     
 
-        private static void OnMaterialsPropertyChangedCallback(DimensionGeometryProvider d, DependencyPropertyChangedEventArgs e)
-        {
-            if (e.Property == MaterialProperty)
-                d.Model.Material = e.NewValue as Material;
-            if (e.Property == BackMaterialProperty)
-                d.Model.BackMaterial = e.NewValue as Material;
-        }
     }
 }

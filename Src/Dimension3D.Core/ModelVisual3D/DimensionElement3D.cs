@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media.Media3D;
 
 namespace Dimension3D.Core
 {
-    public abstract class DimensionElement3D : FrameworkElement
+    public abstract class DimensionElement3D : Control
     {
         private static Type _typeofThis = typeof(DimensionElement3D);
         public static readonly DependencyProperty TransformProperty;

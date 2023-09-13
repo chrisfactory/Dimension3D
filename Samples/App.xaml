@@ -4,16 +4,68 @@
              xmlns:local="clr-namespace:Dimension3D.Samples"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <DiffuseMaterial x:Key="defaultMaterial" Brush="Gray"/>
-        <DiffuseMaterial x:Key="defaultPressed" Brush="LightBlue"/>
+        <DiffuseMaterial x:Key="DefaultMaterial" Brush="Gray"/>
+        <DiffuseMaterial x:Key="DefaultIsPressed" Brush="LightBlue"/>
+        <DiffuseMaterial x:Key="DefaultIsMouseOver" Brush="LightCoral"/>
+
+
+        <DiffuseMaterial x:Key="EarthMaterial">
+            <DiffuseMaterial.Brush>
+                <ImageBrush Stretch="Fill"  ImageSource="/Images/Earth_Texture.png" />
+            </DiffuseMaterial.Brush>
+        </DiffuseMaterial>
 
         <Style x:Key="HearthButtonStyle" TargetType="{x:Type DimensionButton3D}">
-            <Style.Setters>
-                <Setter Property="Model">
+            <Style.Setters >  
+                <Setter Property="Template">
                     <Setter.Value>
-                        <DimensionGeometryBox Material="{StaticResource defaultMaterial}"/>
+                        <ControlTemplate TargetType="DimensionButton3D">
+                            <DimensionGeometrySphere x:Name="box" Material="{DynamicResource EarthMaterial}">
+                                <DimensionGeometrySphere.Transform>
+                                    <Transform3DGroup>
+                                        <ScaleTransform3D ScaleX="10" ScaleY="9.4" ScaleZ="10"/>
+                                        <RotateTransform3D >
+                                            <RotateTransform3D.Rotation>
+                                                <AxisAngleRotation3D x:Name="rotation" Axis="0,1,0" Angle="0"/>
+                                            </RotateTransform3D.Rotation>
+                                        </RotateTransform3D>
+                                        <RotateTransform3D >
+                                            <RotateTransform3D.Rotation>
+                                                <AxisAngleRotation3D   Axis="0,0,1" Angle="23.26"/>
+                                            </RotateTransform3D.Rotation>
+                                        </RotateTransform3D> 
+                                    </Transform3DGroup>
+                                   
+                                </DimensionGeometrySphere.Transform>
+                            </DimensionGeometrySphere>
+                            <ControlTemplate.Triggers>
+                                
+                                <!--<Trigger Property="IsMouseOver" Value="True">
+                                    --><!--<Setter TargetName="box" Property="Material" Value="{DynamicResource DefaultIsMouseOver}"/>--><!--
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetName="rotation" Storyboard.TargetProperty="Angle" 
+                                 From="0.0" To="360" Duration="0:0:0.4" RepeatBehavior="Forever" AutoReverse="False"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.EnterActions>
+                                </Trigger>-->
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter TargetName="box" Property="Material" Value="{DynamicResource DefaultIsPressed}"/>
+                                </Trigger>
+                                <EventTrigger RoutedEvent="Loaded">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="rotation" Storyboard.TargetProperty="Angle" 
+                                 From="0.0" To="360" Duration="0:1:0" RepeatBehavior="Forever" AutoReverse="False"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
                     </Setter.Value>
-                </Setter> 
+                </Setter>
             </Style.Setters> 
         </Style>
     </Application.Resources>

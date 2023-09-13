@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dimension3D.Core.Tools;
+using System;
 using System.Windows;
 using System.Windows.Media.Media3D;
 
@@ -17,6 +18,7 @@ namespace Dimension3D.Core
         public DimensionGeometryModel3D()
         {
             Model = new GeometryModel3D();
+            Model.SetBindingTo(GeometryModel3D.TransformProperty, DimensionVisual3D.TransformProperty, this);
         }
 
         internal GeometryModel3D Model { get => (GeometryModel3D)GetValue(ModelProperty); private set => SetValue(ModelProperty, value); }

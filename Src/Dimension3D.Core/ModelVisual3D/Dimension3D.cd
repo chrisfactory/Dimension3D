@@ -11,8 +11,8 @@
     <Position X="12.75" Y="16.25" Width="3" />
     <AssociationLine Name="Model" Type="Dimension3D.Core.DimensionModel3D" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="15.75" Y="18" />
-        <Point X="16.222" Y="18" />
+        <Point X="15.75" Y="18.163" />
+        <Point X="16.222" Y="18.163" />
         <Point X="16.222" Y="18.891" />
         <Point X="27.542" Y="18.891" Type="JumpStart" />
         <Point X="27.708" Y="18.891" Type="JumpEnd" />
@@ -25,7 +25,7 @@
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAABAAAAAAAAAAAAQAAAAEAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <HashCode>AAAAABAAAABAAAAAAAQAAAAEAAAAAAAAAAgAAAAAAAA=</HashCode>
       <FileName>ModelVisual3D\Visual\DimensionModelVisual3D.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -126,7 +126,7 @@
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>CABARBHQCAAQAAAgAAAEAAAABAAEAABAAFAAAIAAAIA=</HashCode>
+      <HashCode>CABARJHYCAAQAAAgAABEAAAABAAEAABQAFAAAJAAAIA=</HashCode>
       <FileName>ModelVisual3D\Visual\DimensionVisual3D.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -156,14 +156,14 @@
   <Class Name="Dimension3D.Core.DimensionGeometryProvider">
     <Position X="26.25" Y="19.75" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>AFAIABAAAAAAAAAgIAAEABAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AFAIABAAAAAAAAAAIAAEABAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ModelVisual3D\Model\Geometry\DimensionGeometryProvider.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Dimension3D.Core.DimensionGeometrySphere">
     <Position X="28.5" Y="24.75" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAABAAAAAAAAAAAAAAAAAABAA=</HashCode>
       <FileName>ModelVisual3D\Model\Geometry\DimensionGeometrySphere.cs</FileName>
       <NewMemberFileName>ModelVisual3D\Model\DimensionGeometryBox.cs</NewMemberFileName>
     </TypeIdentifier>

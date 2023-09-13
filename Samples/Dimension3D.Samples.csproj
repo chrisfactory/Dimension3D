@@ -8,6 +8,10 @@
     <RootNamespace>$(MSBuildProjectName)</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Images\Earth_Texture.png" />
+  </ItemGroup>
+
    
   <ItemGroup>
     <PackageReference Include="Prism.Core" Version="8.1.97" />
@@ -20,7 +24,9 @@
 
    
   <ItemGroup>
-    <Folder Include="Images\" />
+    <Resource Include="Images\Earth_Texture.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
     

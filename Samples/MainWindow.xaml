@@ -16,7 +16,8 @@
             <DataTemplate DataType="{x:Type local:Hearth}">
                 <DimensionButton3D 
                     Style="{StaticResource HearthButtonStyle}"
-                    Command="{Binding CommandClick}"> 
+                    Command="{Binding CommandClick}">
+                   
                 </DimensionButton3D> 
             </DataTemplate>
         </Grid.Resources>
