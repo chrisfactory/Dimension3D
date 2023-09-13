@@ -18,5 +18,10 @@
     <ProjectReference Include="..\Src\Dimension3D\Dimension3D.csproj" />
   </ItemGroup>
 
+   
+  <ItemGroup>
+    <Folder Include="Images\" />
+  </ItemGroup>
+
     
 </Project>

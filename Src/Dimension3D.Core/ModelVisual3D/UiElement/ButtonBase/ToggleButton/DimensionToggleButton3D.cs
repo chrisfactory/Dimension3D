@@ -12,9 +12,11 @@ namespace Dimension3D.Core
     public abstract class DimensionToggleButton3D : DimensionButtonBase3D
     {
         private static readonly Type _typeofThis = typeof(DimensionToggleButton3D);
-        #region Constructors
-
-     
+      
+        static DimensionToggleButton3D()
+        {
+            DefaultStyleKeyProperty.OverrideMetadata(_typeofThis, new FrameworkPropertyMetadata(_typeofThis));
+        }
 
         /// <summary>
         ///     Default ToggleButton constructor
@@ -25,8 +27,7 @@ namespace Dimension3D.Core
         /// </remarks>
         public DimensionToggleButton3D() : base()
         {
-        }
-        #endregion
+        } 
 
         #region Properties and Events
 

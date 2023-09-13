@@ -13,6 +13,7 @@ namespace Dimension3D.Samples
             _Samples = new()
             {
                 new BasicDemoViwModel(),
+                 new Basic2DemoViwModel(),
             };
 
             _CurrentSample = Samples.FirstOrDefault();

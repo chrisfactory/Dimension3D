@@ -5,16 +5,14 @@ namespace Dimension3D.Core.Tools
 {
     internal static class BindingExtensions
     {
-        internal static BindingExpressionBase SetBindingTo(this DependencyObject source, DependencyProperty from, DependencyProperty to, DependencyObject target)
+        internal static void SetBindingTo(this DependencyObject target, DependencyProperty targetProp, DependencyProperty path, DependencyObject source)
         {
-            if (BindingOperations.IsDataBound(target, to))
-                BindingOperations.ClearBinding(target, to);
-
-            return BindingOperations.SetBinding(target, to, new Binding()
-            {
-                Source = source,
-                Path = new PropertyPath(from)
-            });
+            if (!BindingOperations.IsDataBound(target, targetProp))
+                BindingOperations.SetBinding(target, targetProp, new Binding()
+                {
+                    Source = source,
+                    Path = new PropertyPath(path)
+                });
 
         }
     }

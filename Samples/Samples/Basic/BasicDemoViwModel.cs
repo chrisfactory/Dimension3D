@@ -6,12 +6,20 @@ using System.Threading.Tasks;
 
 namespace Dimension3D.Samples
 {
+  
     public class BasicDemoViwModel : SampleBase
     {
+        private double _OffsetX = 0;
+        private int s = 1;
         public BasicDemoViwModel() : base("Basic Demo")
         {
+            this.Items = new System.Collections.ObjectModel.ObservableCollection<ViewModelBase>()
+            {
+                 new Hearth()
+            };
         }
-
+         
+        
         protected override void ResetDemoAction()
         {
             

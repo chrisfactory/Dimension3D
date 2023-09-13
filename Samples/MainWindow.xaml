@@ -11,19 +11,17 @@
     </Window.DataContext>
 
     <Grid>
+        
         <Grid.Resources>
-            <Storyboard x:Key="Storyboard" BeginTime="00:00:00.000" Duration="00:00:10.000">
-                <DoubleAnimation 
-                    Storyboard.TargetName="Viewport" 
-                    Storyboard.TargetProperty="(Viewport3D.Camera).(PerspectiveCamera.Transform).(RotateTransform3D.Rotation).(AxisAngleRotation3D.Angle)" 
-                    From="0" To="360" Duration="00:30:00.000" AutoReverse="False" RepeatBehavior="Forever"  />
-            </Storyboard>
+            <DataTemplate DataType="{x:Type local:Hearth}">
+                <DimensionButton3D 
+                    Style="{StaticResource HearthButtonStyle}"
+                    Command="{Binding CommandClick}"> 
+                </DimensionButton3D> 
+            </DataTemplate>
         </Grid.Resources>
-        <Grid.Triggers>
-            <EventTrigger RoutedEvent="Loaded">
-                <BeginStoryboard Storyboard="{StaticResource Storyboard}" />
-            </EventTrigger>
-        </Grid.Triggers>
+        
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -58,11 +56,13 @@
         <Grid Background="#FF303030" Grid.Column="1" Grid.Row="1" >
 
             <Grid DockPanel.Dock="Bottom"  Background="Transparent">
-                <Viewport3D ClipToBounds="True" x:Name="Viewport">
+                <Viewport3D   DataContext="{Binding CurrentSample}"
+                    Dimension3D.ItemsSource="{Binding Items}"
+                    ClipToBounds="True" x:Name="Viewport" >
                     <Viewport3D.Camera>
                         <PerspectiveCamera 
                                             x:Name="mCamera" 
-                                            Position="{Binding CurrentSample.CameraPosition}"
+                                            Position="0,0,30"
                                             LookDirection="0,0,-1"
                                             FieldOfView="45"  
                                             FarPlaneDistance="100000" 
@@ -87,18 +87,7 @@
                             <DirectionalLight x:Name="Directional" Color="#FFFFFFFF" Direction="0,-1,-1"/>
                         </ModelVisual3D.Content>
                     </ModelVisual3D>
-
-                    <ModelVisual3D  Dimension3D.DataContext="{Binding CurrentSample}" >
-                        <Dimension3D.Visual3D>
-                            <DimensionModelVisual3D  ItemsSource="{Binding Items}" SatelliteItemsSource="{Binding SatelliteItems}" >
-                                <DimensionModelVisual3D.InputElement>
-                                    <DimensionButton3D Command="{Binding CommandClick}" />
-                                </DimensionModelVisual3D.InputElement>
-                            </DimensionModelVisual3D>
-                        </Dimension3D.Visual3D>
-                    </ModelVisual3D>
-                    
-                    
+                 
                 </Viewport3D>
                 <Button x:Name="but" Content="Reset Demo" Command="{Binding CurrentSample.ResetDemo}" 
                     HorizontalAlignment="Right" VerticalAlignment="Top" Margin="20" Padding="5" 

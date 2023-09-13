@@ -3,7 +3,56 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" >
 
 
-    <Style TargetType="{x:Type DimensionModelVisual3D}">
-        
+   
+
+    <DiffuseMaterial  x:Key="defaultMateriel" Brush="#FF0296B8" />
+    <DiffuseMaterial  x:Key="defaultDisableMateriel" Brush="#FF006F89"  />
+    <DiffuseMaterial  x:Key="defaultBackMateriel" Brush="Gray"/>
+    <DiffuseMaterial  x:Key="defaultMouseOverMateriel" Brush="#FF02B7E0"/>
+    <DiffuseMaterial  x:Key="defaultButtonClickMateriel" Brush="#FF00CFFF" />
+    <DiffuseMaterial  x:Key="defaultIsCheckedMateriel" Brush="#FFDB00FF" />
+
+    <!--<Style TargetType="{x:Type VisualItems}" BasedOn="{x:Null}">
+        <Setter Property="SnapsToDevicePixels" Value="False"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ItemsControl">
+                    <ItemsPresenter  Style="{x:Null}" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <StackPanel Style="{x:Null}"
+                                    IsItemsHost="True"
+                                    SnapsToDevicePixels="False"
+                            VirtualizingPanel.IsVirtualizing="False" 
+                            VirtualizingPanel.IsVirtualizingWhenGrouping="False"
+                                    VirtualizingPanel.CacheLength="0"
+                            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                            ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter> 
+    </Style>-->
+
+
+    <Style x:Key="DefaultDimensionModelVisual3DStyle" TargetType="{x:Type DimensionModelVisual3D}">  
+        <Setter Property="SnapsToDevicePixels" Value="False"/> 
     </Style>
+ 
+    <Style x:Key="DefaultDimensionButtonBase3DStyle" TargetType="{x:Type DimensionButtonBase3D}" BasedOn="{StaticResource DefaultDimensionModelVisual3DStyle}"> 
+    </Style>
+
+
+    <Style x:Key="DefaultDimensionToggleButton3DComposition" TargetType="{x:Type DimensionToggleButton3D}" BasedOn="{StaticResource DefaultDimensionModelVisual3DStyle}"> 
+    </Style>
+
+
+
+    <Style TargetType="{x:Type DimensionModelVisual3D}" BasedOn="{StaticResource DefaultDimensionModelVisual3DStyle}"/>
+    <Style TargetType="{x:Type DimensionRepeatButton3D}" BasedOn="{StaticResource DefaultDimensionButtonBase3DStyle}"/>
+    <Style TargetType="{x:Type DimensionButton3D}" BasedOn="{StaticResource DefaultDimensionButtonBase3DStyle}"/>
+    <Style TargetType="{x:Type DimensionToggleButton3D}" BasedOn="{StaticResource DefaultDimensionToggleButton3DComposition}"/>
 </ResourceDictionary>

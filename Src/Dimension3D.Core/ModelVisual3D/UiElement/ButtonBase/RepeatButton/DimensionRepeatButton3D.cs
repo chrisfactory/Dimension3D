@@ -19,7 +19,7 @@ namespace Dimension3D.Core
 
         static DimensionRepeatButton3D()
         {
-
+            DefaultStyleKeyProperty.OverrideMetadata(_typeofThis, new FrameworkPropertyMetadata(_typeofThis));
             ClickModeProperty.OverrideMetadata(_typeofThis, new FrameworkPropertyMetadata(ClickMode.Press));
         }
 

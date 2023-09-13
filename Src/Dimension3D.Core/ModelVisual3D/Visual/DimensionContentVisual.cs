@@ -4,7 +4,7 @@ using System.Windows.Media;
 
 namespace Dimension3D.Core
 {
-    public class DimensionContentVisual : DimensionVisual3D
+    public sealed class DimensionContentVisual : DimensionVisual3D
     {
         private static Type _typeofThis = typeof(DimensionContentVisual);
         public static readonly DependencyProperty VisualProperty;

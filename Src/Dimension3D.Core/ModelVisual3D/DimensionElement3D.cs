@@ -14,6 +14,11 @@ namespace Dimension3D.Core
             TransformProperty = DependencyProperty.Register(nameof(Transform), typeof(Transform3D), _typeofThis, new FrameworkPropertyMetadata<DimensionElement3D>(TransformPropertyChangedCallback));
         }
 
+        internal protected DimensionElement3D()
+        {
+
+        }
+
         public Transform3D Transform { get => (Transform3D)GetValue(TransformProperty); set => SetValue(TransformProperty, value); }
 
 

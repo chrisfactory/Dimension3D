@@ -4,6 +4,17 @@
              xmlns:local="clr-namespace:Dimension3D.Samples"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
- 
+        <DiffuseMaterial x:Key="defaultMaterial" Brush="Gray"/>
+        <DiffuseMaterial x:Key="defaultPressed" Brush="LightBlue"/>
+
+        <Style x:Key="HearthButtonStyle" TargetType="{x:Type DimensionButton3D}">
+            <Style.Setters>
+                <Setter Property="Model">
+                    <Setter.Value>
+                        <DimensionGeometryBox Material="{StaticResource defaultMaterial}"/>
+                    </Setter.Value>
+                </Setter> 
+            </Style.Setters> 
+        </Style>
     </Application.Resources>
 </Application>

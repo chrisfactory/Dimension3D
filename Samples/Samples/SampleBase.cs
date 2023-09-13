@@ -11,9 +11,8 @@ namespace Dimension3D.Samples
         public SampleBase(string title)
         {
             _Title = title;
-            ResetDemo = new DelegateCommand(ResetDemoAction, CanResetDemo);
-            CommandClick = new DelegateCommand(ClickAction, CanClickDemo);
-            base.RegisterCommands(ResetDemo, CommandClick);
+            ResetDemo = new DelegateCommand(ResetDemoAction, CanResetDemo); 
+            base.RegisterCommands(ResetDemo);
             ResetDemoAction();
         }
 
@@ -23,15 +22,12 @@ namespace Dimension3D.Samples
         public ObservableCollection<ViewModelBase>? Items { get => _Items; protected set => NotifySet(ref _Items, value); }
         public ObservableCollection<ViewModelBase>? SatelliteItems { get => _SatelliteItems; protected set => NotifySet(ref _SatelliteItems, value); }
         public DelegateCommand ResetDemo { get; private set; }
-        public DelegateCommand CommandClick { get; private set; }
+      
 
 
         protected virtual bool CanResetDemo() => true;
 
-        protected abstract void ResetDemoAction();
-
-        private bool CanClickDemo() => true;
-        protected virtual void ClickAction() { }
+        protected abstract void ResetDemoAction(); 
 
     }
 }

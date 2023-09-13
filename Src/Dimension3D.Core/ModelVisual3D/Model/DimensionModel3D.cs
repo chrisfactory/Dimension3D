@@ -12,6 +12,7 @@ namespace Dimension3D.Core
             DefaultStyleKeyProperty.OverrideMetadata(_typeofThis, new FrameworkPropertyMetadata(_typeofThis));
         }
 
- 
+        internal abstract Model3D? GetModel();
+
     }
 }

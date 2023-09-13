@@ -11,7 +11,7 @@ namespace Dimension3D.Core
 {
     [DefaultEvent("Click")]
     [Localizability(LocalizationCategory.Button)]
-    public abstract class DimensionButtonBase3D : DimensionInputElement3D, ICommandSource
+    public abstract class DimensionButtonBase3D : DimensionModelVisual3D, ICommandSource
     {
         private static readonly Type _typeofThis = typeof(DimensionButtonBase3D);
         public static readonly RoutedEvent ClickEvent;
