@@ -5,7 +5,7 @@ using System.Windows.Media.Media3D;
 
 namespace Dimension3D.Core
 {
-    public abstract class DimensionElement3D : Control
+    public abstract class DimensionElement3D : ItemsControl
     {
         private static Type _typeofThis = typeof(DimensionElement3D);
         public static readonly DependencyProperty TransformProperty;

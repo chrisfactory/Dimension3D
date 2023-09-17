@@ -13,16 +13,117 @@
     <Grid>
         
         <Grid.Resources>
+
+            <DataTemplate DataType="{x:Type local:Sun}">
+                <local:PlanetControl   x:Name="planetCtrl"
+                    Material="{StaticResource SunMaterial}" 
+                    SizeX="{Binding SizeX}"
+                    SizeY="{Binding SizeY}"
+                    SizeZ="{Binding SizeY}"
+                    PositionX="{Binding PositionX}"
+                    PositionY="{Binding PositionY}"
+                    PositionZ="{Binding PositionZ}"
+                    TrajectoryCenterX="{Binding TrajectoryCenterX}"
+                    TrajectoryCenterY="{Binding TrajectoryCenterY}"
+                    TrajectoryCenterZ="{Binding TrajectoryCenterZ}"
+                    TrajectoryRadiusX="{Binding TrajectoryRadiusX}"
+                    TrajectoryRadiusY="{Binding TrajectoryRadiusY}"
+                    TrajectoryRadiusZ="{Binding TrajectoryRadiusZ}"
+                    RotationDuration="{Binding RotationDuration}" 
+                    Command="{Binding CommandClick}"
+                    ItemsSource="{Binding Items}">
+                 
+                </local:PlanetControl>
+            </DataTemplate>
             <DataTemplate DataType="{x:Type local:Hearth}">
-                <DimensionButton3D 
-                    Style="{StaticResource HearthButtonStyle}"
-                    Command="{Binding CommandClick}">
-                   
-                </DimensionButton3D> 
+                <local:PlanetControl  x:Name="planetCtrl"
+                    Material="{StaticResource EarthMaterial}" 
+                    SizeX="{Binding SizeX}"
+                    SizeY="{Binding SizeY}"
+                    SizeZ="{Binding SizeY}"
+                    PositionX="{Binding PositionX}"
+                    PositionY="{Binding PositionY}"
+                    PositionZ="{Binding PositionZ}"
+                    TrajectoryCenterX="{Binding TrajectoryCenterX}"
+                    TrajectoryCenterY="{Binding TrajectoryCenterY}"
+                    TrajectoryCenterZ="{Binding TrajectoryCenterZ}"
+                    TrajectoryRadiusX="{Binding TrajectoryRadiusX}"
+                    TrajectoryRadiusY="{Binding TrajectoryRadiusY}"
+                    TrajectoryRadiusZ="{Binding TrajectoryRadiusZ}"
+                    RotationDuration="{Binding RotationDuration}" 
+                    Command="{Binding CommandClick}"
+                    ItemsSource="{Binding Items}">
+                    <local:PlanetControl.Transform>
+                        <RotateTransform3D 
+                                                    CenterX="{Binding TrajectoryCenterX, Mode=OneWay}"
+                                                    CenterY="{Binding TrajectoryCenterY, Mode=OneWay}"
+                                                    CenterZ="{Binding TrajectoryCenterZ, Mode=OneWay}">
+                            <RotateTransform3D.Rotation>
+                                <AxisAngleRotation3D x:Name="trajectoryRotation" Axis="0,1,0"  Angle="0"/>
+                            </RotateTransform3D.Rotation>
+                        </RotateTransform3D>
+                    </local:PlanetControl.Transform>
+                </local:PlanetControl>
+                <DataTemplate.Triggers>
+                    <DataTrigger Binding="{Binding ElementName=planetCtrl,Path=IsPressed}" Value="True">
+                        <Setter TargetName="planetCtrl" Property="Material" Value="{StaticResource EarthNightMaterial}"/>
+                    </DataTrigger>
+                    <EventTrigger RoutedEvent="Loaded">
+                        <EventTrigger.Actions>
+                            <BeginStoryboard >
+                                <Storyboard AutoReverse="False" RepeatBehavior="Forever" >
+                                    <DoubleAnimation Storyboard.TargetName="trajectoryRotation" Storyboard.TargetProperty="Angle"  From="0" To="360" Duration="00:07:3"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger.Actions>
+                    </EventTrigger>
+                </DataTemplate.Triggers>
+            </DataTemplate>
+ 
+            <DataTemplate DataType="{x:Type local:Moon}">
+                <local:PlanetControl  
+                    Material="{StaticResource MoonMaterial}" 
+                    SizeX="{Binding SizeX}"
+                    SizeY="{Binding SizeY}"
+                    SizeZ="{Binding SizeY}"
+                    PositionX="{Binding PositionX}"
+                    PositionY="{Binding PositionY}"
+                    PositionZ="{Binding PositionZ}"
+                    TrajectoryCenterX="{Binding TrajectoryCenterX}"
+                    TrajectoryCenterY="{Binding TrajectoryCenterY}"
+                    TrajectoryCenterZ="{Binding TrajectoryCenterZ}"
+                    TrajectoryRadiusX="{Binding TrajectoryRadiusX}"
+                    TrajectoryRadiusY="{Binding TrajectoryRadiusY}"
+                    TrajectoryRadiusZ="{Binding TrajectoryRadiusZ}"
+                    RotationDuration="{Binding RotationDuration}" 
+                    Command="{Binding CommandClick}"
+                    ItemsSource="{Binding Items}">
+                    <local:PlanetControl.Transform>
+                        <RotateTransform3D 
+                                                    CenterX="{Binding TrajectoryCenterX, Mode=OneWay}"
+                                                    CenterY="{Binding TrajectoryCenterY, Mode=OneWay}"
+                                                    CenterZ="{Binding TrajectoryCenterZ, Mode=OneWay}">
+                            <RotateTransform3D.Rotation>
+                                <AxisAngleRotation3D x:Name="trajectoryRotation" Axis="0,1,0"  Angle="0"/>
+                            </RotateTransform3D.Rotation>
+                        </RotateTransform3D>
+                    </local:PlanetControl.Transform> 
+                </local:PlanetControl>
+                <DataTemplate.Triggers>
+               
+                    <EventTrigger RoutedEvent="Loaded">
+                        <EventTrigger.Actions>
+                            <BeginStoryboard >
+                                <Storyboard AutoReverse="False" RepeatBehavior="Forever" >
+                                    <DoubleAnimation Storyboard.TargetName="trajectoryRotation" Storyboard.TargetProperty="Angle"  From="0" To="360" Duration="00:00:32.4"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger.Actions>
+                    </EventTrigger>
+                </DataTemplate.Triggers>
             </DataTemplate>
         </Grid.Resources>
-        
-        
+
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -57,39 +158,42 @@
         <Grid Background="#FF303030" Grid.Column="1" Grid.Row="1" >
 
             <Grid DockPanel.Dock="Bottom"  Background="Transparent">
-                <Viewport3D   DataContext="{Binding CurrentSample}"
+                <Viewport3D x:Name="viewport"
+                    DataContext="{Binding CurrentSample}"
+                    Dimension3D.UseDimension3D="True"
                     Dimension3D.ItemsSource="{Binding Items}"
-                    ClipToBounds="True" x:Name="Viewport" >
+                    ClipToBounds="True" >
                     <Viewport3D.Camera>
                         <PerspectiveCamera 
                                             x:Name="mCamera" 
-                                            Position="0,0,30"
+                                            Position="800,1400,12000"
                                             LookDirection="0,0,-1"
                                             FieldOfView="45"  
                                             FarPlaneDistance="100000" 
                                             UpDirection="0,1,0" 
                                             NearPlaneDistance="0">
-                            <PerspectiveCamera.Transform>
-                                <RotateTransform3D CenterX="0" CenterY="0" CenterZ="0" >
-                                    <RotateTransform3D.Rotation>
-                                        <AxisAngleRotation3D x:Name="RotCamera" Axis="0,1,0" Angle="0"/>
-                                    </RotateTransform3D.Rotation>
-                                </RotateTransform3D>
-                            </PerspectiveCamera.Transform>
                         </PerspectiveCamera>
                     </Viewport3D.Camera>
                     <ModelVisual3D>
                         <ModelVisual3D.Content>
-                            <AmbientLight x:Name="Ambient" Color="#808080"/>
+                            <AmbientLight x:Name="Ambient" Color="#00202020"/>
                         </ModelVisual3D.Content>
                     </ModelVisual3D>
+                  
                     <ModelVisual3D>
                         <ModelVisual3D.Content>
-                            <DirectionalLight x:Name="Directional" Color="#FFFFFFFF" Direction="0,-1,-1"/>
+                            <PointLight />
                         </ModelVisual3D.Content>
                     </ModelVisual3D>
-                 
                 </Viewport3D>
+                <DimensionCameramanViewer BorderThickness="1"  
+                                          DataContext="{Binding CurrentSample}"  Viewport="{Binding ElementName=viewport}"
+                                          HorizontalAlignment="Center" Width="80"  Height="80"   Margin="10"
+                                          VerticalAlignment="Top" >
+                  
+                </DimensionCameramanViewer>
+              
+
                 <Button x:Name="but" Content="Reset Demo" Command="{Binding CurrentSample.ResetDemo}" 
                     HorizontalAlignment="Right" VerticalAlignment="Top" Margin="20" Padding="5" 
                     Background="#FF404040"

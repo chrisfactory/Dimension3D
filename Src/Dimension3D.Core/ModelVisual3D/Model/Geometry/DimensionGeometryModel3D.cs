@@ -5,25 +5,57 @@ using System.Windows.Media.Media3D;
 
 namespace Dimension3D.Core
 {
-    public class DimensionGeometryModel3D : DimensionModel3D
+    public abstract class DimensionGeometryModel3D : FrameworkElement
     {
         private static Type _typeofThis = typeof(DimensionGeometryModel3D);
-        private static readonly DependencyProperty ModelProperty;
+        public static readonly DependencyPropertyKey GeometryPropertyKey;
+        public static readonly DependencyProperty GeometryProperty;
         static DimensionGeometryModel3D()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(_typeofThis, new FrameworkPropertyMetadata(_typeofThis));
-            ModelProperty = DependencyProperty.Register(nameof(Model), typeof(GeometryModel3D), _typeofThis, new FrameworkPropertyMetadata());
+            GeometryPropertyKey = DependencyProperty.RegisterReadOnly(nameof(Geometry), typeof(MeshGeometry3D), _typeofThis, new FrameworkPropertyMetadata());
+            GeometryProperty = GeometryPropertyKey.DependencyProperty;
         }
-
         public DimensionGeometryModel3D()
         {
-            Model = new GeometryModel3D();
-            Model.SetBindingTo(GeometryModel3D.TransformProperty, DimensionVisual3D.TransformProperty, this);
+            InvalidateGeometry();
         }
 
-        internal GeometryModel3D Model { get => (GeometryModel3D)GetValue(ModelProperty); private set => SetValue(ModelProperty, value); }
+        public MeshGeometry3D Geometry { get => (MeshGeometry3D)GetValue(GeometryProperty); private set => SetValue(GeometryPropertyKey, value); }
 
-        internal override Model3D? GetModel() => Model;
 
+
+
+
+        protected virtual void InvalidateGeometry()
+        {
+            Geometry = ProvideMesh();
+        }
+
+        protected abstract MeshGeometry3D ProvideMesh();
+
+    }
+
+
+    public class GeometryProvider : DependencyObject
+    {
+        private static Type _typeofThis = typeof(DimensionGeometryModel3D);
+        public static readonly DependencyProperty ProviderProperty;
+
+        static GeometryProvider()
+        {
+            ProviderProperty = DependencyProperty.RegisterAttached("Provider", typeof(DimensionGeometryModel3D), _typeofThis, new FrameworkPropertyMetadata<GeometryModel3D>(ProviderPropertyChangedCallback));
+        }
+
+
+
+        public static DimensionGeometryModel3D GetProvider(GeometryModel3D obj) => (DimensionGeometryModel3D)obj.GetValue(ProviderProperty);
+        public static void SetProvider(GeometryModel3D obj, DimensionGeometryModel3D value) => obj.SetValue(ProviderProperty, value);
+
+
+        private static void ProviderPropertyChangedCallback(GeometryModel3D d, DependencyPropertyChangedEventArgs e)
+        {
+            if (e.NewValue is DimensionGeometryModel3D geometry)
+                d.SetBindingTo(GeometryModel3D.GeometryProperty, DimensionGeometryModel3D.GeometryProperty, geometry);
+        }
     }
 }

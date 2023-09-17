@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Media.Media3D;
 
@@ -135,8 +136,6 @@ namespace Dimension3D.Core
             double dt = DegToRad(360.0) / tDiv;
             double dp = DegToRad(180.0) / pDiv;
 
-
-
             for (int pi = 0; pi <= pDiv; pi++)
             {
                 double phi = pi * dp;
@@ -197,5 +196,59 @@ namespace Dimension3D.Core
 
             return p;
         }
+
+
+
+
+        public static void CreateArc(MeshGeometry3D mesh,
+             double startAngle,
+             double endAngle,
+             double radius,
+             double width,
+             int vertexCount)
+        {
+            double start = DegToRad(startAngle);
+            double end = DegToRad(endAngle);
+
+
+            double outerRadius = radius + (width / 2);
+            double innerRadius = radius - (width / 2);
+
+            var positions = new List<Point3D>();
+            var coordinates = new List<Point>();
+            var triangles = new List<int>();
+
+            for (int vertexIndex = 0; vertexIndex < vertexCount + 1; vertexIndex++)
+            {
+
+                double lengthRatio = (double)vertexIndex / vertexCount;
+                if (lengthRatio > 1)
+                    lengthRatio = 1;
+
+                double angle = start + ((end - start) * lengthRatio);
+
+                double outerX = Math.Sin(angle) * outerRadius;
+                double outerY = Math.Cos(angle) * outerRadius;
+
+                double innerX = Math.Sin(angle) * innerRadius;
+                double innerY = Math.Cos(angle) * innerRadius;
+
+                positions.Add(new Point3D(outerX, outerY, 0));
+                positions.Add(new Point3D(innerX, innerY, 0));
+
+
+                coordinates.Add(new Point(lengthRatio, 0));
+                coordinates.Add(new Point(lengthRatio, 1));
+
+                triangles.AddRange(new int[] { vertexIndex * 2 + 0, vertexIndex * 2 + 1, vertexIndex * 2 + 2 });
+                triangles.AddRange(new int[] { vertexIndex * 2 + 1, vertexIndex * 2 + 3, vertexIndex * 2 + 2 });
+            }
+
+            mesh.Positions = new Point3DCollection(positions);
+            mesh.TextureCoordinates = new System.Windows.Media.PointCollection(coordinates);
+            mesh.TriangleIndices = new System.Windows.Media.Int32Collection(triangles);
+
+        }
+
     }
 }

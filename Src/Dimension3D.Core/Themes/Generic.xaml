@@ -1,8 +1,11 @@
 <ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" >
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:Dimension3D.Core">
 
-
+    <ResourceDictionary.MergedDictionaries>
+        <local:DimensionCameramanViewerThemes/>
+    </ResourceDictionary.MergedDictionaries>
    
 
     <DiffuseMaterial  x:Key="defaultMateriel" Brush="#FF0296B8" />
@@ -38,21 +41,25 @@
     </Style>-->
 
 
-    <Style x:Key="DefaultDimensionModelVisual3DStyle" TargetType="{x:Type DimensionModelVisual3D}">  
+    <Style x:Key="DefaultDimensionModelVisual3DStyle" TargetType="{x:Type local:DimensionModelVisual3D}">  
         <Setter Property="SnapsToDevicePixels" Value="False"/> 
     </Style>
- 
-    <Style x:Key="DefaultDimensionButtonBase3DStyle" TargetType="{x:Type DimensionButtonBase3D}" BasedOn="{StaticResource DefaultDimensionModelVisual3DStyle}"> 
+
+    <Style x:Key="DefaultDimensionButtonBase3DStyle" TargetType="{x:Type local:DimensionButtonBase3D}" BasedOn="{StaticResource DefaultDimensionModelVisual3DStyle}"> 
     </Style>
 
 
-    <Style x:Key="DefaultDimensionToggleButton3DComposition" TargetType="{x:Type DimensionToggleButton3D}" BasedOn="{StaticResource DefaultDimensionModelVisual3DStyle}"> 
+    <Style x:Key="DefaultDimensionToggleButton3DComposition" TargetType="{x:Type local:DimensionToggleButton3D}" BasedOn="{StaticResource DefaultDimensionModelVisual3DStyle}"> 
     </Style>
 
 
 
-    <Style TargetType="{x:Type DimensionModelVisual3D}" BasedOn="{StaticResource DefaultDimensionModelVisual3DStyle}"/>
-    <Style TargetType="{x:Type DimensionRepeatButton3D}" BasedOn="{StaticResource DefaultDimensionButtonBase3DStyle}"/>
-    <Style TargetType="{x:Type DimensionButton3D}" BasedOn="{StaticResource DefaultDimensionButtonBase3DStyle}"/>
-    <Style TargetType="{x:Type DimensionToggleButton3D}" BasedOn="{StaticResource DefaultDimensionToggleButton3DComposition}"/>
+    <Style TargetType="{x:Type local:DimensionModelVisual3D}" BasedOn="{StaticResource DefaultDimensionModelVisual3DStyle}"/>
+    <Style TargetType="{x:Type local:DimensionRepeatButton3D}" BasedOn="{StaticResource DefaultDimensionButtonBase3DStyle}"/>
+    <Style TargetType="{x:Type local:DimensionButton3D}" BasedOn="{StaticResource DefaultDimensionButtonBase3DStyle}"/>
+    <Style TargetType="{x:Type local:DimensionToggleButton3D}" BasedOn="{StaticResource DefaultDimensionToggleButton3DComposition}"/>
+
+
+  
+
 </ResourceDictionary>

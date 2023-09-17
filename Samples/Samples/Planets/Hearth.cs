@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows;
 
 namespace Dimension3D.Samples
 {
@@ -10,7 +7,16 @@ namespace Dimension3D.Samples
     {
         public Hearth()
         {
-            Items.Add(new Moon());
+            SizeX = 200;
+            SizeY = 200;
+            SizeZ = 200;
+
+            PositionX = 2200; 
+            TrajectoryRadiusX = PositionX;
+
+            RotationDuration = new Duration(TimeSpan.FromSeconds(1.2)); 
+
+            Items.Add(new Moon(this));
         }
     }
 }

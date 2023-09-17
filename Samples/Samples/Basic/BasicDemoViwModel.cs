@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dimension3D.Samples
 {
-  
+
     public class BasicDemoViwModel : SampleBase
     {
         private double _OffsetX = 0;
@@ -15,14 +15,17 @@ namespace Dimension3D.Samples
         {
             this.Items = new System.Collections.ObjectModel.ObservableCollection<ViewModelBase>()
             {
-                 new Hearth()
+                new Sun(), 
+                // new Moon(2200),
+                new Hearth(),
+           
             };
         }
-         
-        
+
+
         protected override void ResetDemoAction()
         {
-            
+
         }
     }
 }

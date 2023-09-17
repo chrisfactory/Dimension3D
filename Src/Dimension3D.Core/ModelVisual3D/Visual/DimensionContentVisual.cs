@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Media;
+using System.Windows.Media.Media3D;
 
 namespace Dimension3D.Core
 {
@@ -13,14 +14,17 @@ namespace Dimension3D.Core
         {
             DefaultStyleKeyProperty.OverrideMetadata(_typeofThis, new FrameworkPropertyMetadata(_typeofThis));
             VisualProperty = DependencyProperty.Register(nameof(Visual), typeof(Visual), _typeofThis, new FrameworkPropertyMetadata());
-            GeometryModelProperty = DependencyProperty.Register(nameof(GeometryModel), typeof(DimensionGeometryModel3D), _typeofThis, new FrameworkPropertyMetadata());
+            GeometryModelProperty = DependencyProperty.Register(nameof(GeometryModel), typeof(GeometryModel3D), _typeofThis, new FrameworkPropertyMetadata());
         }
 
 
 
         public Visual Visual { get => (Visual)GetValue(VisualProperty); set => SetValue(VisualProperty, value); } 
-        public DimensionGeometryModel3D GeometryModel { get => (DimensionGeometryModel3D)GetValue(GeometryModelProperty); set => SetValue(GeometryModelProperty, value); }
-         
+        public GeometryModel3D GeometryModel { get => (GeometryModel3D)GetValue(GeometryModelProperty); set => SetValue(GeometryModelProperty, value); }
 
+        protected override void InvalidateModel()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

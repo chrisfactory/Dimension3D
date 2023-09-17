@@ -2,7 +2,7 @@
 
 namespace Dimension3D.Core
 {
-    public class DimensionGeometryBox : DimensionGeometryProvider
+    public class DimensionGeometryBox : DimensionGeometryModel3D
     {
         protected override MeshGeometry3D ProvideMesh()
         {

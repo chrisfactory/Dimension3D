@@ -1,11 +1,14 @@
-﻿using System;
+﻿using Dimension3D.Core.Tools;
+using System;
 using System.ComponentModel;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Markup;
 using System.Windows.Media.Media3D;
 
 namespace Dimension3D.Core
 {
+    [TemplatePart(Name = "PART_MODEL", Type = typeof(Model3DPresenter))]
     [ContentProperty(nameof(Model))]
     [DefaultProperty(nameof(Model))]
     public class DimensionModelVisual3D : DimensionVisual3D
@@ -15,29 +18,33 @@ namespace Dimension3D.Core
         static DimensionModelVisual3D()
         {
             DefaultStyleKeyProperty.OverrideMetadata(_typeofThis, new FrameworkPropertyMetadata(_typeofThis));
-            ModelProperty = DependencyProperty.Register(nameof(Model), typeof(DimensionModel3D), _typeofThis, new FrameworkPropertyMetadata<DimensionModelVisual3D>(ModelPropertyChangedCallback));
+            ModelProperty = DependencyProperty.Register(nameof(Model), typeof(Model3D), _typeofThis, new FrameworkPropertyMetadata<DimensionModelVisual3D>(ModelPropertyChangedCallback));
         }
 
 
-        public DimensionModel3D Model { get => (DimensionModel3D)GetValue(ModelProperty); set => SetValue(ModelProperty, value); }
+        public Model3D Model { get => (Model3D)GetValue(ModelProperty); set => SetValue(ModelProperty, value); }
 
 
         private static void ModelPropertyChangedCallback(DimensionModelVisual3D d, DependencyPropertyChangedEventArgs e)
+        { 
+            d.InvalidateModel();
+        }
+
+        protected override void InvalidateModel()
         {
-            Model3D? newModel = null;
-            if (e.NewValue is DimensionModel3D dimensionModel3D)
-                newModel = dimensionModel3D.GetModel();
-            d.SetModel(newModel);
+            this.ApplyModel(Model);
         }
 
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            var dimensionModel3D = this.Template.FindName("box", this) as DimensionModel3D;
-            Model3D? newModel = null;
-            if (dimensionModel3D != null)
-                newModel = dimensionModel3D.GetModel();
-            SetModel(newModel);
+            var modelPresenter = this.Template.FindName("PART_MODEL", this) as Model3DPresenter;
+      
+            if (modelPresenter != null)
+            {
+                this.SetBindingTo(ModelProperty, Model3DPresenter.ModelProperty, modelPresenter);
+            }
+            //ApplyModel(modelPresenter);
         }
     }
 }

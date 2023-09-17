@@ -9,23 +9,13 @@
   </Class>
   <Class Name="Dimension3D.Core.DimensionModelVisual3D">
     <Position X="12.75" Y="16.25" Width="3" />
-    <AssociationLine Name="Model" Type="Dimension3D.Core.DimensionModel3D" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="15.75" Y="18.163" />
-        <Point X="16.222" Y="18.163" />
-        <Point X="16.222" Y="18.891" />
-        <Point X="27.542" Y="18.891" Type="JumpStart" />
-        <Point X="27.708" Y="18.891" Type="JumpEnd" />
-        <Point X="31.466" Y="18.891" />
-        <Point X="31.466" Y="10.082" />
-        <Point X="28.75" Y="10.082" />
-      </Path>
+    <AssociationLine Name="Model" Type="System.Windows.Media.Media3D.Model3D">
       <MemberNameLabel ManuallyPlaced="true">
-        <Position X="-12.895" Y="-7.232" />
+        <Position X="9.553" Y="0.122" />
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAABAAAABAAAAAAAQAAAAEAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <HashCode>AAAAABAAAABAAAAAAAQAAAAEAAAAQAAAAAgAAAAAAAA=</HashCode>
       <FileName>ModelVisual3D\Visual\DimensionModelVisual3D.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -33,9 +23,12 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Dimension3D.Core.DimensionGeometryModel3D">
-    <Position X="26.25" Y="15.25" Width="2.75" />
+    <Position X="31" Y="21.75" Width="2.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
-      <HashCode>AAAAABAAAACAAAAAAAAAAAAEAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <HashCode>AAAIABAAAAAAAAAAAAAAEBAAAAAAAAAAAAAAAQAAgAA=</HashCode>
       <FileName>ModelVisual3D\Model\Geometry\DimensionGeometryModel3D.cs</FileName>
       <NewMemberFileName>ModelVisual3D\Model\DimensionModel3D.cs</NewMemberFileName>
     </TypeIdentifier>
@@ -45,27 +38,20 @@
     <TypeIdentifier />
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="Dimension3D.Core.DimensionModel3D">
-    <Position X="26.5" Y="8.5" Width="2.25" />
-    <TypeIdentifier>
-      <HashCode>AAAAABAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>ModelVisual3D\Model\DimensionModel3D.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="Dimension3D.Core.DimensionContentVisual">
-    <Position X="17.25" Y="16.25" Width="2.75" />
+    <Position X="17.25" Y="17.75" Width="2.75" />
     <AssociationLine Name="Visual" Type="System.Windows.Media.Visual">
       <MemberNameLabel ManuallyPlaced="true">
         <Position X="0.812" Y="0.053" />
       </MemberNameLabel>
     </AssociationLine>
-    <AssociationLine Name="GeometryModel" Type="Dimension3D.Core.DimensionGeometryModel3D">
-      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
-        <Position X="4.329" Y="0.044" Height="0.182" Width="1.748" />
+    <AssociationLine Name="GeometryModel" Type="System.Windows.Media.Media3D.GeometryModel3D">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="3.759" Y="0.143" />
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAABIAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAIAAQAA=</HashCode>
+      <HashCode>AAAAABIAAAAAAAAAAAAAgAAAAAAAQAAAAAAAAIAAQAA=</HashCode>
       <FileName>ModelVisual3D\Visual\DimensionContentVisual.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -96,7 +82,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="System.Windows.Media.Visual" Collapsed="true">
-    <Position X="21.5" Y="17" Width="2.25" />
+    <Position X="21.5" Y="18.5" Width="2.25" />
     <TypeIdentifier />
   </Class>
   <Class Name="Dimension3D.Core.DimensionToggleButton3D" Collapsed="true">
@@ -115,31 +101,18 @@
         </TypeIdentifier>
       </Class>
     </NestedTypes>
-    <AssociationLine Name="Children" Type="Dimension3D.Core.VisualItems">
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="1.372" Y="-0.023" />
-      </MemberNameLabel>
-    </AssociationLine>
     <AssociationLine Name="InputElement" Type="Dimension3D.Core.DimensionInputElement3D">
       <MemberNameLabel ManuallyPlaced="true">
-        <Position X="4.423" Y="0.101" />
+        <Position X="9.93" Y="0.129" />
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>CABARJHYCAAQAAAgAABEAAAABAAEAABQAFAAAJAAAIA=</HashCode>
+      <HashCode>CAAARJHYAAAAEAAAAABAAAEAAIEEQAgQAAAAABAAAIA=</HashCode>
       <FileName>ModelVisual3D\Visual\DimensionVisual3D.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="Children" />
       <Property Name="InputElement" />
     </ShowAsAssociation>
-  </Class>
-  <Class Name="Dimension3D.Core.VisualItems">
-    <Position X="20" Y="10.75" Width="2.25" />
-    <TypeIdentifier>
-      <HashCode>AAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>ModelVisual3D\Visual\VisualItems.cs</FileName>
-    </TypeIdentifier>
   </Class>
   <Class Name="Dimension3D.Core.DimensionInputElement3D">
     <Position X="1.75" Y="7" Width="2.25" />
@@ -153,33 +126,84 @@
     <TypeIdentifier />
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="Dimension3D.Core.DimensionGeometryProvider">
-    <Position X="26.25" Y="19.75" Width="2.75" />
-    <TypeIdentifier>
-      <HashCode>AFAIABAAAAAAAAAAIAAEABAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>ModelVisual3D\Model\Geometry\DimensionGeometryProvider.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="Dimension3D.Core.DimensionGeometrySphere">
-    <Position X="28.5" Y="24.75" Width="2.75" />
+    <Position X="36" Y="24.75" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAIAAAABAAAAAAAAAAAAAAAAAABAA=</HashCode>
       <FileName>ModelVisual3D\Model\Geometry\DimensionGeometrySphere.cs</FileName>
       <NewMemberFileName>ModelVisual3D\Model\DimensionGeometryBox.cs</NewMemberFileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Dimension3D.Core.DimensionGeometryBox">
+  <Class Name="Dimension3D.Core.DimensionGeometryArc">
     <Position X="32" Y="24.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAIEBAACAAAgBAAAQAAABEAAAAAAAAAAAAIDIAAAAA=</HashCode>
+      <FileName>ModelVisual3D\Model\Geometry\DimensionGeometryArc.cs</FileName>
+      <NewMemberFileName>ModelVisual3D\Model\Geometry\DimensionGeometryBox.cs</NewMemberFileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dimension3D.Core.DimensionGeometryBox">
+    <Position X="28" Y="24.75" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ModelVisual3D\Model\Geometry\DimensionGeometryBox.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Dimension3D.Core.DimensionGeometry">
-    <Position X="22.5" Y="24.75" Width="2.75" />
+  <Class Name="System.Windows.Media.Media3D.Model3D" Collapsed="true">
+    <Position X="25.25" Y="15.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="System.Windows.Media.Media3D.GeometryModel3D">
+    <Position X="25" Y="18" Width="2" />
+    <TypeIdentifier />
+    <ShowAsAssociation>
+      <Property Name="Geometry" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="System.Windows.Media.Media3D.Geometry3D" Collapsed="true">
+    <Position X="29" Y="18" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="System.Windows.Media.Media3D.MeshGeometry3D" Collapsed="true">
+    <Position X="29" Y="20" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Dimension3D.Core.Model3DPresenter" Collapsed="true">
+    <Position X="21.25" Y="13.75" Width="3" />
     <TypeIdentifier>
-      <HashCode>AAAAABAAAAAAAAAAAAAAABAAAAAAAAAAACAAAQAAgAA=</HashCode>
-      <FileName>ModelVisual3D\Model\Geometry\DimensionGeometry.cs</FileName>
+      <HashCode>AAAAABAAAAAAAAAAAAQAAAAEAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>ModelVisual3D\Model\Model3DPresenter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dimension3D.Core.DimensionCameraman" Collapsed="true">
+    <Position X="7.25" Y="26.5" Width="3" />
+    <InheritanceLine Type="Dimension3D.Core.DimensionModelVisual3D" ManuallyRouted="true">
+      <Path>
+        <Point X="14.25" Y="18.704" />
+        <Point X="14.25" Y="19.308" />
+        <Point X="7.024" Y="19.308" />
+        <Point X="7.024" Y="25.664" />
+        <Point X="8.75" Y="25.664" />
+        <Point X="8.75" Y="26.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>CQAAEBYAQAIAAABAgAAQAAAAAEAIAAAACADAEAAAAAA=</HashCode>
+      <FileName>Control\CameraMan\DimensionCameraman.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dimension3D.Core.DimensionCheckBox3D" Collapsed="true">
+    <Position X="18" Y="24.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ModelVisual3D\UiElement\ButtonBase\ToggleButton\CheckBox\DimensionCheckBox3D.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dimension3D.Core.DimensionGeometryPlan">
+    <Position X="39.5" Y="24.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAEAABAAAAAAgAAAAAAAABAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>ModelVisual3D\Model\Geometry\DimensionGeometryPlan.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

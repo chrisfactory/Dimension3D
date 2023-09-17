@@ -3,7 +3,7 @@ using System.Windows.Media.Media3D;
 
 namespace Dimension3D.Core
 {
-    public class DimensionGeometrySphere : DimensionGeometryProvider
+    public class DimensionGeometrySphere : DimensionGeometryModel3D
     {
 
 

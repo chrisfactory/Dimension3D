@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net7.0-windows</TargetFramework>
@@ -7,8 +7,5 @@
     <RootNamespace>$(MSBuildProjectName)</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="ModelVisual3D\UiElement\ButtonBase\ToggleButton\RadioButton\" />
-  </ItemGroup>
 
 </Project>

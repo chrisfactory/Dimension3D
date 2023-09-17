@@ -9,7 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\Earth_Night_Texture.jpg" />
     <None Remove="Images\Earth_Texture.png" />
+    <None Remove="Images\Moon_Texture.jpg" />
+    <None Remove="Images\Sun_Texture.jpg" />
   </ItemGroup>
 
    
@@ -24,7 +27,16 @@
 
    
   <ItemGroup>
+    <Resource Include="Images\Earth_Night_Texture.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\Earth_Texture.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Moon_Texture.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Sun_Texture.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
