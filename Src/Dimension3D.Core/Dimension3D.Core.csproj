@@ -7,5 +7,9 @@
     <RootNamespace>$(MSBuildProjectName)</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Control\Buttons\" />
+  </ItemGroup>
+
 
 </Project>

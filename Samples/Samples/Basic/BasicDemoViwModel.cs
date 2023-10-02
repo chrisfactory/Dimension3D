@@ -15,8 +15,7 @@ namespace Dimension3D.Samples
         {
             this.Items = new System.Collections.ObjectModel.ObservableCollection<ViewModelBase>()
             {
-                new Sun(), 
-                // new Moon(2200),
+                new Sun(),  
                 new Hearth(),
            
             };

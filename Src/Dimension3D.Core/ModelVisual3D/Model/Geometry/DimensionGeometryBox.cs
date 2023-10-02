@@ -1,4 +1,5 @@
-﻿using System.Windows.Media.Media3D;
+﻿using System.Windows;
+using System.Windows.Media.Media3D;
 
 namespace Dimension3D.Core
 {
@@ -7,7 +8,7 @@ namespace Dimension3D.Core
         protected override MeshGeometry3D ProvideMesh()
         {
             var center = new Point3D();
-            var size = new Size3D(1, 1, 1);
+            var size = new Size(1, 1);
             var mesh = new MeshGeometry3D();
             MeshBuilder.CreatePlan(mesh, center, size, PlanSides.Front);
             MeshBuilder.CreatePlan(mesh, center, size, PlanSides.Back);

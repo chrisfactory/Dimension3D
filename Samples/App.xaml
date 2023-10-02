@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:Dimension3D.Samples"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-
+     
         <EmissiveMaterial x:Key="TrajectoryMaterial" Brush="#30DB00FF"/>
         <EmissiveMaterial x:Key="TrajectoryMaterial2" Brush="#3000DBFF"/>
         <MaterialGroup x:Key="SunMaterial">
@@ -34,6 +34,7 @@
                 <ImageBrush Stretch="Fill"  ImageSource="/Images/Moon_Texture.jpg" />
             </DiffuseMaterial.Brush>
         </DiffuseMaterial>
+ 
 
         <Style TargetType="{x:Type local:PlanetControl}">
 
@@ -73,7 +74,7 @@
                                             </GeometryModel3D.Transform>
                                         </GeometryModel3D>
 
-                                        <!--<GeometryModel3D Material="{StaticResource TrajectoryMaterial}" BackMaterial="{StaticResource TrajectoryMaterial}">
+                                        <GeometryModel3D Material="{StaticResource TrajectoryMaterial}" BackMaterial="{StaticResource TrajectoryMaterial}">
                                             <GeometryProvider.Provider>
                                                 <DimensionGeometryArc 
                                                 StartAngle="0" 
@@ -91,7 +92,9 @@
 
                                                 </Transform3DGroup>
                                             </GeometryModel3D.Transform>
-                                        </GeometryModel3D>-->
+                                        </GeometryModel3D>
+
+
                                         <GeometryModel3D Material="{StaticResource TrajectoryMaterial2}" BackMaterial="{StaticResource TrajectoryMaterial2}">
                                             <GeometryProvider.Provider>
                                                 <DimensionGeometryArc 

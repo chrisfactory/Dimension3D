@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Dimension3D.Samples" 
         mc:Ignorable="d"   WindowStartupLocation="CenterScreen" WindowState="Maximized"
-        Title="Dimension3D Demo" Height="600" Width="600"   Background="#FF606060">
+        Title="Dimension3D Demo" Height="1200" Width="1200"   Background="#FF606060">
     <Window.DataContext>
         <local:GlobalViewModel/>
     </Window.DataContext>
@@ -157,16 +157,16 @@
 
         <Grid Background="#FF303030" Grid.Column="1" Grid.Row="1" >
 
-            <Grid DockPanel.Dock="Bottom"  Background="Transparent">
+            <Grid x:Name="ZommControl" DockPanel.Dock="Bottom"  Background="Gray">
                 <Viewport3D x:Name="viewport"
                     DataContext="{Binding CurrentSample}"
-                    Dimension3D.UseDimension3D="True"
+                    Dimension3D.UseDimension3D="True" 
                     Dimension3D.ItemsSource="{Binding Items}"
                     ClipToBounds="True" >
                     <Viewport3D.Camera>
                         <PerspectiveCamera 
                                             x:Name="mCamera" 
-                                            Position="800,1400,12000"
+                                            Position="0,0,200"
                                             LookDirection="0,0,-1"
                                             FieldOfView="45"  
                                             FarPlaneDistance="100000" 
@@ -176,7 +176,7 @@
                     </Viewport3D.Camera>
                     <ModelVisual3D>
                         <ModelVisual3D.Content>
-                            <AmbientLight x:Name="Ambient" Color="#00202020"/>
+                            <AmbientLight x:Name="Ambient" Color="#00FFFFFF"/>
                         </ModelVisual3D.Content>
                     </ModelVisual3D>
                   
@@ -186,15 +186,18 @@
                         </ModelVisual3D.Content>
                     </ModelVisual3D>
                 </Viewport3D>
-                <DimensionCameramanViewer BorderThickness="1"  
-                                          DataContext="{Binding CurrentSample}"  Viewport="{Binding ElementName=viewport}"
-                                          HorizontalAlignment="Center" Width="80"  Height="80"   Margin="10"
+                <DimensionCameramanViewer BorderThickness="1"  x:Name="camViewer"
+                                          DataContext="{Binding CurrentSample}"  
+                                          Viewport="{Binding ElementName=viewport}"
+                                          ZoomElement="{Binding ElementName=ZommControl}"  
+                                          Height="60"  Width="120"  Margin="10" Padding="0"
+                                          HorizontalAlignment="Center" 
                                           VerticalAlignment="Top" >
                   
                 </DimensionCameramanViewer>
-              
 
-                <Button x:Name="but" Content="Reset Demo" Command="{Binding CurrentSample.ResetDemo}" 
+
+                <Button x:Name="but" Content="Reset Demo" Command="{x:Static DimensionCameramanViewer.FaceCommand}"  CommandTarget="{Binding ElementName=camViewer}"
                     HorizontalAlignment="Right" VerticalAlignment="Top" Margin="20" Padding="5" 
                     Background="#FF404040"
                     Foreground="Violet">
